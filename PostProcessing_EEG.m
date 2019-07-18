@@ -2,8 +2,9 @@
 %******************* ERP Features Extraction per channel/per region *******
 %**************************************************************************
 %*****4-Extract statistics Features, Power Spectral Density of Channels****
-%******5- Latency**********************************************************
-%**************************************************************************
+%******5- Latency, Amplitude, Area, ***************************************
+%*******6- Empirical Mode Decomposition: IMF 1 to IMF 3********************
+%*******7- Energy, Entropy, Statistical features of IMFs*******************
 %***************************written by Lina Abou-Abbas*********************
 %***************************Email: lina.abou-abbas@mail.mcgill.ca**********
 
