@@ -4,13 +4,17 @@
 %******************************* DELTA, TETHA, ALPHA, BETA,  GAMMA ****************************
 
 
+% Open location of saved segmented files
+% Save EEG 
+function Power_per_chan=power_extract_per_channel (EEG)
 
-for i=1:EEG.nbchans
+            for i=1:EEG.nbchans
                 for j=1:EEG.pnts
                     avg_EEG_face(i,j)=mean(EEG.data(i,j,:));
                 end
             end
             % 
+            
             for i=1:EEG.nbchans
                 
             [PSD_dB_avg(i,:),freqs] =spectopo(ERP.bindata(i,:),0,EEG.srate,'freqrange',[1 80],...
@@ -25,7 +29,7 @@ for i=1:EEG.nbchans
             betaIndx  = find(freqs>13 & freqs<30);
             gammaIndx = find(freqs>30 & freqs<50);
             
-              for i=1:EEG.nbchans
+            for i=1:EEG.nbchans
                 
             %Compute absolute power per each channel per each frequency band 1st method
             AbsdeltaPower(i) = mean(10.^(PSD_dB_avg(i,deltaIndx)/10));
@@ -42,7 +46,7 @@ for i=1:EEG.nbchans
             RelbetaPower(i)=AbsbetaPower(i)/TotalPower(i);
             RelgammaPower(i)=AbsgammaPower(i)/TotalPower(i);
             
-              end
+            end
               
-            Power_features_chan_onerow=[ AbsdeltaPower, AbsthetaPower, AbsalphaPower ,AbsbetaPower,AbsgammaPower, ...
+            Power_perchan=[ AbsdeltaPower, AbsthetaPower, AbsalphaPower ,AbsbetaPower,AbsgammaPower, ...
                 ReldeltaPower, RelthetaPower, RelalphaPower ,RelbetaPower,RelgammaPower];  
